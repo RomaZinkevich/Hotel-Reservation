@@ -88,7 +88,7 @@ string string_check_input(const string& TEXT_BEFORE_INPUT){
 	//takes what user types
 	getline(cin, answer);
 	//if length of the input is 0, that is ENTER, input is incorrect
-	if (answer.length() == 0) {
+	if ((answer.length() == 0)||(answer==" ")) {
 		cin.clear();
 		cout << "Incorrect input" << endl << endl;
 		//goes back to checkpoint input
@@ -291,7 +291,6 @@ int fix_array(Reservation reservations[80], int deleted_index) {
 	reservations[i].name = "";
 	reservations[i].number = -858993460;
 	reservations[i].room_type = 4;
-	cout << i << endl;
 	return i;//return index of the first empty element so new reservation can be put after last one
 }
 
