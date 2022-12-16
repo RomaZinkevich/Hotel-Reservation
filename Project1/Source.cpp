@@ -78,6 +78,7 @@ int int_check_input(const int MINIMUM, const int MAXIMUM,const string EXCEPTION_
 
 }
 
+//CANT CHECK TWO OR MORE SPACES
 //function that checks is string input is correct
 string string_check_input(const string& TEXT_BEFORE_INPUT){
 	string answer;
@@ -88,14 +89,15 @@ string string_check_input(const string& TEXT_BEFORE_INPUT){
 	//takes what user types
 	getline(cin, answer);
 	//if length of the input is 0, that is ENTER, input is incorrect
-	if ((answer.length() == 0)||(answer==" ")) {
-		cin.clear();
-		cout << "Incorrect input" << endl << endl;
-		//goes back to checkpoint input
-		goto input;
+	for (int i = 0; i < answer.length(); i++) {
+		if (((answer[i] > 'a') && (answer[i] < 'z')) || ((answer[i] > 'A') && (answer[i] < 'Z'))) {
+			return answer;
+		}
 	}
-	//if program comes here than everything is fine with input and it can return it
-	return answer;
+	cin.clear();
+	cout << "Incorrect input" << endl << endl;
+	//goes back to checkpoint input
+	goto input;
 }
 
 //function that creates random number of reservation between 10000 and 99999
